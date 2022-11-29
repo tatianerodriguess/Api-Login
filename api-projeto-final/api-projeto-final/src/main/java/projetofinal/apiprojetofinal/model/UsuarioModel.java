@@ -1,8 +1,6 @@
 package projetofinal.apiprojetofinal.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity(name = "usuario")
 

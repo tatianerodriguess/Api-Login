@@ -24,4 +24,11 @@ public class UsuarioController {
         return repository.save(usuario);
     }
 
+    @PutMapping(path = "/api/usuario/alterar")
+    public UsuarioModel alterar(@RequestBody UsuarioModel obj){
+        return repository.save(obj);
+    }
+
+    
+
 }
