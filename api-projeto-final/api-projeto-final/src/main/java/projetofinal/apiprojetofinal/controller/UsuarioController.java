@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import projetofinal.apiprojetofinal.model.UsuarioModel;
 import projetofinal.apiprojetofinal.repository.UsuarioRepository;
 
+import java.util.List;
+
 @RestController
 public class UsuarioController {
 
@@ -19,6 +21,11 @@ public class UsuarioController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/api/lista")
+    public List<UsuarioModel> selecionar(){
+        return (List<UsuarioModel>) repository.findAll();
+    }
+
     @PostMapping(path = "/api/usuario/salvar")
     public UsuarioModel salvar (@RequestBody UsuarioModel usuario){
         return repository.save(usuario);
@@ -29,6 +36,11 @@ public class UsuarioController {
         return repository.save(obj);
     }
 
-    
+    @DeleteMapping(path = "/api/{codigo}")
+    public void remover(@PathVariable Integer codigo){
+
+        UsuarioModel obj = repository.findByCodigo(codigo);
+        repository.delete(obj);
+    }
 
 }
